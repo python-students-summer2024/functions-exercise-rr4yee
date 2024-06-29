@@ -23,20 +23,18 @@ def main():
     print("Welcome to the Math App!!!")
     print("")  # line break
     ### write code to complete this function BELOW here ###
-
     die_1_value = app_functions.roll_die()
     die_2_value = app_functions.roll_die()
     import random
-    question_type = random.choice(["sum", "difference"])
+    question_type = app_functions.get_question_type()
     app_functions.print_question(die_1_value, die_2_value, question_type)
-    #print(app_functions.print_question(die_1_value, die_2_value, question_type))
     given_answer = app_functions.input_answer()
     if given_answer == -1:
         app_functions.print_error_message
-    else: 
+    else:
         if app_functions.is_correct_answer(die_1_value, die_2_value, question_type, given_answer):
             app_functions.print_congratulations(question_type)
-        else: 
+        else:
             app_functions.print_correct_answer(die_1_value, die_2_value, question_type)
 
     ### write code to complete this function ABOVE here ###

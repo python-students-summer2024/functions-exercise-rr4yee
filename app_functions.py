@@ -17,7 +17,6 @@ def roll_die():
     return num
 
 
-
 def get_question_type():
     """
     Pseudo-randomly decides whether to give an addition question or a subtraction question.
@@ -27,11 +26,10 @@ def get_question_type():
     """
     # complete this function below here
     num = random.randint(1, 6)
-    if num % 2 == 0:
+    if num % 2 == 0: # why remainder? what does that mean
         return "sum"
-    else: 
+    else:
         return "difference"
-
 
 
 def print_question(die_1_value, die_2_value, question_type):
@@ -52,12 +50,11 @@ def print_question(die_1_value, die_2_value, question_type):
     """
     # complete this function below here
     if question_type == "sum":
-        print(f"You rolled a {die_1_value} and a {die_2_value}... What is the sum of {die_1_value} and {die_2_value}? ")
+        print(f"You rolled a {die_1_value} and a {die_2_value}... What is the sum of {die_1_value} and {die_2_value}?")
     elif question_type == "difference":
-        print(f"You rolled a {die_1_value} and a {die_2_value}... What is the difference between {die_1_value} and {die_2_value}? ")
-    else: 
+        print(f"You rolled a {die_1_value} and a {die_2_value}... What is the difference between {die_1_value} and {die_2_value}?")
+    else:
         return None
-
 
 
 def input_answer():
@@ -71,10 +68,11 @@ def input_answer():
     :returns: The user's answer, as an int, if valid; or -1 if the user's response was not valid.
     """
     # complete this function below here
-    response = input("Please enter your answer to the question: ").strip()
-    if not response or not response.isdigit():
+    answer = input("Please enter your answer to the most recent question: ").strip()
+    if answer.isdigit():
+        return int(answer)
+    else:
         return -1
-    return int(response)
 
 
 def is_correct_answer(die_1_value, die_2_value, question_type, given_answer):
@@ -88,13 +86,14 @@ def is_correct_answer(die_1_value, die_2_value, question_type, given_answer):
     :returns: True if the user's given answer is correct, False otherwise.
     """
     # complete this function below here
-    if question_type == "sum": 
+    if question_type == "sum":
         correct = die_1_value + die_2_value
     elif question_type == "difference":
         correct = abs(die_1_value - die_2_value)
     else: 
         return False
-    return given_answer == correct
+    return given_answer == correct # why
+
 
 def print_congratulations(question_type):
     """
